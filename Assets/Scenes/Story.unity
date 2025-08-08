@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960.00006, y: -1082}
+  m_AnchoredPosition: {x: 960.00006, y: 2}
   m_SizeDelta: {x: 1920, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &208924977
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1d43a8e61eea24183e0f2799e600ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _storyImage: {fileID: 208924978}
+  _storyText: {fileID: 2022548115}
   _moveCoordinate: 1
   _moveDuration: 10
 --- !u!114 &208924978
@@ -517,9 +517,9 @@ RectTransform:
   m_Father: {fileID: 208924976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 959.99994, y: 540}
-  m_SizeDelta: {x: 1800, y: 900}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 959.99994, y: -895}
+  m_SizeDelta: {x: 1800, y: -180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2022548115
 MonoBehaviour:
@@ -554,7 +554,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\"\u6625\u306E\u5B63\u7BC0\u3001\u767D\u5DDD\u90F7\u3067\u6D41\u884C\u308A\u75C5\u304C\u8513\u5EF6\u3001\u4F4F\u4EBA\u306E\u5927\u534A\u304C\u5E8A\u306B\u4F0F\u3057\u3066\u3057\u307E\u3044\n\u5927\u5909\u306A\u4E8B\u614B\u306B\u3002\n\n\u767D\u5DDD\u90F7\u306B\u4F4F\u3080\u4E3B\u4EBA\u516C\uFF08\uFF18\uFF5E\uFF11\uFF10\u6B73\u3050\u3089\u3044\uFF09\u306F\u81EA\u8EAB\u304C\u75C5\u6C17\u306B\u306A\u3063\u305F\u969B\u306B\n\u98DF\u3079\u305F\u6BCD\u306E\u624B\u4F5C\u308A\u304A\u7CA5\u304C\u7F8E\u5473\u3057\u304B\u3063\u305F\u3053\u3068\u3092\u601D\u3044\u51FA\u3057\u3001\u305D\u308C\u3092\u4F4F\u4EBA\u306B\u632F\u821E\u304A\u3046\n\u3068\u6C7A\u610F\u3002\n\n\u7686\u3067\u904E\u3054\u3059\u6625\u3092\u53D6\u308A\u623B\u3059\u305F\u3081\u3001\u6BCD\u304B\u3089\u9810\u304B\u3063\u305F\u30EC\u30B7\u30D4\u3092\u3082\u3068\u306B\n\u8ABF\u5408\u3078\u6311\u3080\u30FB\u30FB\u30FB\uFF01\n"
+  m_Text: "\u6625\u306E\u5B63\u7BC0\u3001\u767D\u5DDD\u90F7\u3067\u6D41\u884C\u308A\u75C5\u304C\u8513\u5EF6\u3001\u4F4F\u4EBA\u306E\u5927\u534A\u304C\u5E8A\u306B\u4F0F\u3057\u3066\u3057\u307E\u3044\n\u5927\u5909\u306A\u4E8B\u614B\u306B\u3002\n\n\u767D\u5DDD\u90F7\u306B\u4F4F\u3080\u4E3B\u4EBA\u516C\uFF08\uFF18\uFF5E\uFF11\uFF10\u6B73\u3050\u3089\u3044\uFF09\u306F\u81EA\u8EAB\u304C\u75C5\u6C17\u306B\u306A\u3063\u305F\u969B\u306B\n\u98DF\u3079\u305F\u6BCD\u306E\u624B\u4F5C\u308A\u304A\u7CA5\u304C\u7F8E\u5473\u3057\u304B\u3063\u305F\u3053\u3068\u3092\u601D\u3044\u51FA\u3057\u3001\u305D\u308C\u3092\u4F4F\u4EBA\u306B\u632F\u821E\u304A\u3046\n\u3068\u6C7A\u610F\u3002\n\n\u7686\u3067\u904E\u3054\u3059\u6625\u3092\u53D6\u308A\u623B\u3059\u305F\u3081\u3001\u6BCD\u304B\u3089\u9810\u304B\u3063\u305F\u30EC\u30B7\u30D4\u3092\u3082\u3068\u306B\n\u8ABF\u5408\u3078\u6311\u3080\u30FB\u30FB\u30FB\uFF01\n"
 --- !u!222 &2022548116
 CanvasRenderer:
   m_ObjectHideFlags: 0
