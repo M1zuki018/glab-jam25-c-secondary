@@ -12,6 +12,9 @@ public class CookingGameController : MonoBehaviour
     public CursorController cursorController;
     public TMP_Text finishText;
 
+    public GameObject animationBase;
+    public GameObject animationEnd;
+
     public float cookingTime = 5f;
 
     private float timer;
@@ -25,6 +28,9 @@ public class CookingGameController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         finishText.gameObject.SetActive(false);
         cursorController.Initialize(); // reset position + setup boundaries
+
+        animationBase.SetActive(true);
+        animationEnd.SetActive(false);
 
         StartCoroutine(StartGameRoutine());
     }
@@ -64,6 +70,9 @@ public class CookingGameController : MonoBehaviour
 
         cursorController.Stop();
         playerInput.DeactivateInput();
+
+        animationBase.SetActive(false);
+        animationEnd.SetActive(true);
 
         StartCoroutine(WaitForContinue());
     }
