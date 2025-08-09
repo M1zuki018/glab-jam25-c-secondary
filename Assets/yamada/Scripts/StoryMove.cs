@@ -5,19 +5,22 @@ using UnityEngine.UI;
 public class StoryMove : MonoBehaviour
 {
     [SerializeField] private Text _storyText;
-    [SerializeField] private float _moveCoordinate = 20f;
+    [SerializeField] private float _moveYCoordinate = 20f;
     [SerializeField] private float _moveDuration = 10f;
-    private Tween _moveStoryTween;
+
+    [SerializeField] private float _moveZCoordinate = -10f;
 
     void Start()
     {
         RectTransform _moveStoryText = _storyText.rectTransform;
+        var moveStoryTween = DOTween.Sequence();
 
-        _moveStoryTween = _moveStoryText.DOAnchorPosY(_moveCoordinate, _moveDuration)
+        moveStoryTween.Append(_moveStoryText.DOAnchorPosY(_moveYCoordinate, _moveDuration))
+            .Join(_moveStoryText.DOScale(_moveZCoordinate, _moveDuration))
             .SetEase(Ease.Linear)
             .OnComplete(() =>
             {
-                _moveStoryTween.Kill();
+                moveStoryTween.Kill();
             });
     }
 }
