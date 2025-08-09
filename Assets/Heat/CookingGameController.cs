@@ -93,7 +93,7 @@ public class CookingGameController : MonoBehaviour
         GameManager.Instance.AddScore(score);
         finishText.text = "Loading next screen...";
         Debug.Log("Passage à l'écran suivant !");
-        TransitionManager.Instance.StartTransition("SampleScene");
+        TransitionManager.Instance.StartTransition("Season_Test");
     }
 
     public void OnMoveLeft(InputAction.CallbackContext context)

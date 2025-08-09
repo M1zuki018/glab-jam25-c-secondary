@@ -12,7 +12,7 @@ public class OnClickSkip : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            _loader.LoadScene("InGame");
+            TransitionManager.Instance.StartTransition("HeatScene");
         }
     }
 }

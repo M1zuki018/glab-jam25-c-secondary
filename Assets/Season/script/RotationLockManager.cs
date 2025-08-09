@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,6 +6,7 @@ public class RotationLockManager : MonoBehaviour
 {
     [SerializeField] private Seasoning_C target;
     [SerializeField] private Slider slider;  // スライダーを参照
+    private int score = 0;
 
     private bool _hasRotatedOnce = false;
     private bool _hasLockedRotation = false;
@@ -24,6 +26,9 @@ public class RotationLockManager : MonoBehaviour
                 _hasLockedRotation = true;
 
                 CheckSliderValue(slider.value);
+                GameManager.Instance.AddScore(score);
+
+                StartCoroutine(DelayedTransition());
             }
         }
     }
@@ -33,18 +38,32 @@ public class RotationLockManager : MonoBehaviour
         if (value < 0.4f || value >= 0.61f)
         {
             Debug.Log("失敗");
+            score = 0;
+
         }
         else if (value >= 0.4f && value < 0.48f)
         {
             Debug.Log("成功");
+            score = 1;
+
         }
         else if (value >= 0.53f && value <= 0.6f)
         {
             Debug.Log("成功");
+            score = 1;
+
         }
         else
         {
             Debug.Log("完璧");
+            score = 2;
+
         }
+    }
+
+    private IEnumerator DelayedTransition()
+    {
+        yield return new WaitForSeconds(2f);
+        TransitionManager.Instance.StartTransition("Mazeru");
     }
 }

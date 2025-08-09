@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -9,9 +10,9 @@ public class Score : MonoBehaviour
     [SerializeField] private int _perfect = 15;
     [SerializeField] private Timer _timer;
     public int MixScore;
-    public Text ScoreText;
+    public TMP_Text ScoreText;
     public Text EvaluationText;
-    public int TotalScore;
+    public int score;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,9 +52,12 @@ public class Score : MonoBehaviour
     {
         //setactive(true)にする
         //Debug.Log("TimeUp");
-        TotalScore = GetScore(MixScore);
-        Debug.Log(TotalScore);
+        score = GetScore(MixScore);
         EvaluationText.gameObject.SetActive(true);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.AddScore(score);
+        }
     }
 
     /// <summary>
@@ -92,4 +96,6 @@ public class Score : MonoBehaviour
             return 0;
         }
     }
+
+
 }
