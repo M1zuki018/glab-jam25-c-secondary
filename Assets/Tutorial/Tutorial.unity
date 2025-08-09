@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -48}
+  m_AnchoredPosition: {x: 0, y: -54}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &57945648
@@ -189,7 +189,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u3061\u3087\u3046\u3069\u3044\u3044\u5869\u52A0\u6E1B\u306B\u3057\u3088\u3046\uFF01\n<color=#00008b>\u30DE\u30A6\u30B9\u306E\u4E0A\u4E0B</color>\u3067<color=yellow>\u30D0\u30FC\u306E\u9EC4\u8272\u90E8\u5206</color>\u3092\u72D9\u304A\u3046\uFF01"
+  m_Text: "\u3061\u3087\u3046\u3069\u3044\u3044\u5869\u52A0\u6E1B\u306B\u3057\u3088\u3046\uFF01\n<color=#00008b>\u30DE\u30A6\u30B9\u3092\u4E0A\u4E0B\u306B\u52D5\u304B\u3057\u3066</color>\n<color=red>\u30D0\u30FC\u306E<color=yellow>\u9EC4\u8272\u90E8\u5206</color>\u3092\u72D9\u304A\u3046\uFF01</color>"
 --- !u!222 &57945649
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -423,7 +423,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u5236\u9650\u6642\u9593\u5185\u306F<color=#FF0000>\uFF15\u79D2</color>\uFF01\n<color=#00008b>\u30DE\u30A6\u30B9\u64CD\u4F5C</color>\u3067<color=yellow>\u305F\u304F\u3055\u3093\u6DF7\u305C\u3088\u3046\uFF01</color>"
+  m_Text: "\u5236\u9650\u6642\u9593\u306F\"\uFF15\u79D2\"\uFF01\n<color=#00008b>\u30DE\u30A6\u30B9\u64CD\u4F5C</color>\u3067<color=red>\u305F\u304F\u3055\u3093\u6DF7\u305C\u3088\u3046\uFF01</color>"
 --- !u!222 &832336079
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8627451}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -544,7 +544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -188.4}
+  m_AnchoredPosition: {x: 0, y: -180}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1014612078
@@ -918,7 +918,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -64.2}
+  m_AnchoredPosition: {x: 0, y: -60}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1785052466
@@ -1033,7 +1033,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u8ABF\u6574\u30D0\u30FC\u5185\u306E\u68D2\u304C\u3001\u5DE6\u53F3\u306B\u66B4\u308C\u308B\uFF01\n<color=#00008B>\u77E2\u5370\u30AD\u30FC\uFF08\u2190,\u2192\uFF09</color>\u3067<color=yellow>\u771F\u3093\u4E2D\u306B\u7DAD\u6301</color>\u3057\u3088\u3046\uFF01"
+  m_Text: "\u8ABF\u6574\u30D0\u30FC\u5185\u306E\u68D2\u304C\u3001\u5DE6\u53F3\u306B\u66B4\u308C\u308B\uFF01\n<color=#00008B>\u77E2\u5370\u30AD\u30FC(\u2190,\u2192)</color>\u3067<color=red>\u771F\u3093\u4E2D\u3092\u7DAD\u6301</color>\u3057\u3088\u3046\uFF01"
 --- !u!222 &1857150274
 CanvasRenderer:
   m_ObjectHideFlags: 0
