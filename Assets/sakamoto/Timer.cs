@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,14 +17,14 @@ public class Timer : MonoBehaviour
     /// <summary>
     /// TimeUpのアクション
     /// </summary>
-    public Action TimeUPAction;
+    public Action TimeUPAction; 
 
     public Text TimerText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        CountStart = false;
+        CountStart = true;
         IsTimeUP = false;
     }
 
@@ -49,6 +50,7 @@ public class Timer : MonoBehaviour
             TimeUPAction?.Invoke();
             IsTimeUP = true;
             CountStart = false;
+            StartCoroutine(DelayedTransition());
         }
     }
 
@@ -59,6 +61,11 @@ public class Timer : MonoBehaviour
         CountStart = true;
         else
         CountStart = false;
-        
+    }
+
+    private IEnumerator DelayedTransition()
+    {
+        yield return new WaitForSeconds(2f);
+        TransitionManager.Instance.StartTransition("Result");
     }
 }

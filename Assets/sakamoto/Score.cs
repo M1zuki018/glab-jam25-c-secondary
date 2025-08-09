@@ -10,7 +10,7 @@ public class Score : MonoBehaviour
     [SerializeField] private int _perfect = 15;
     [SerializeField] private Timer _timer;
     public int MixScore;
-    public TMP_Text ScoreText;
+    public Text ScoreText;
     public Text EvaluationText;
     public int score;
 
