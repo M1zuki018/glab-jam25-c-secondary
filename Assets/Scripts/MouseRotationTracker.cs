@@ -1,13 +1,20 @@
+using System;
 using UnityEngine;
 
 public class MouseRotationTracker : MonoBehaviour
 {
+    public event Action<int, float> OnRotationUpdated; // (rotationCount, remainingTime)
+
+    [SerializeField] private float limitTime = 5f;
+
     private Vector2 centerScreen;
     private float totalAngle = 0f;
-    public int rotationCount = 0;
-    public float rotationThreshold = 360f;
+    private int rotationCount = 0;
+    private float rotationThreshold = 360f;
 
     private float lastAngle;
+    private float elapsedTime = 0f;
+    private bool isCounting = true;
 
     void Start()
     {
@@ -17,6 +24,10 @@ public class MouseRotationTracker : MonoBehaviour
 
     void Update()
     {
+        if (!isCounting) return;
+
+        elapsedTime += Time.deltaTime;
+
         float currentAngle = GetMouseAngle();
         float deltaAngle = Mathf.DeltaAngle(lastAngle, currentAngle);
 
@@ -27,8 +38,25 @@ public class MouseRotationTracker : MonoBehaviour
         {
             rotationCount++;
             totalAngle = 0f;
-            Debug.Log($"‰ñ“]”: {rotationCount}");
+            Debug.Log($"Rotations: {rotationCount}");
         }
+
+        if (elapsedTime >= limitTime)
+        {
+            isCounting = false;
+            Debug.Log($"Time's up. Rotations: {rotationCount}");
+        }
+
+        float remainingTime = Mathf.Max(limitTime - elapsedTime, 0f);
+        OnRotationUpdated?.Invoke(rotationCount, remainingTime);
+    }
+
+    public void CountReset()
+    {
+        rotationCount = 0;
+        elapsedTime = 0f;
+        isCounting = true;
+        OnRotationUpdated?.Invoke(rotationCount, limitTime);
     }
 
     private float GetMouseAngle()
