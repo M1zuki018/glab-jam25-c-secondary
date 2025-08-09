@@ -1,0 +1,18 @@
+using Unity.VisualScripting;
+using UnityEngine;
+
+/// <summary>
+/// ‰æ–Ê‚ðƒNƒŠƒbƒN‚µ‚½‚çScene‚ðLoad
+/// </summary>
+public class OnClickSkip : MonoBehaviour
+{
+    [SerializeField] private SceneLoader _loader; 
+
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            _loader.LoadScene("InGame");
+        }
+    }
+}
