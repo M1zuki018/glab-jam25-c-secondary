@@ -1,11 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class CursorController : MonoBehaviour
 {
     public RectTransform cursor;
     public RectTransform bar;    // 赤いバー
     public float speed = 300f;   // スピード
+    public float pulseSpeed = 6f;
+    public float pulseAmount = 0.05f;
 
     private float minX;
     private float maxX;
@@ -23,10 +27,11 @@ public class CursorController : MonoBehaviour
         direction = 0;
     }
 
-
-
     void Update()
     {
+        float scaleY = 1f + Mathf.Sin(Time.time * pulseSpeed) * pulseAmount;
+        cursor.localScale = new Vector3(1f, scaleY, 1f);
+
         if (direction != 0)
         {
             cursor.anchoredPosition += Vector2.right * direction * speed * Time.deltaTime;
@@ -35,6 +40,14 @@ public class CursorController : MonoBehaviour
                 cursor.anchoredPosition.y
             );
         }
+    }
+
+    public IEnumerator Flash(Image img, Color color, float duration)
+    {
+        img.color = color;
+        img.gameObject.SetActive(true);
+        yield return new WaitForSeconds(duration);
+        img.gameObject.SetActive(false);
     }
 
     public void HandleMove(int moveDir, InputAction.CallbackContext context)
