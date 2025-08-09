@@ -8,6 +8,9 @@ public class Seasoning_C : MonoBehaviour
     [SerializeField]
     private float rotationSpeed = 0.1f;
 
+    public float DeltaY {  get; private set; }
+    public bool CanRotate { get; set; } = true;
+
     void Start()
     {
         prevMousePos = Input.mousePosition;
@@ -15,13 +18,15 @@ public class Seasoning_C : MonoBehaviour
 
     void Update()
     {
-        Vector3 currentMousePos = Input.mousePosition;
-        float deltaY = currentMousePos.y - prevMousePos.y;
+        if (!CanRotate) return;
 
-        if (Mathf.Abs(deltaY) > 0.5f)
+        Vector3 currentMousePos = Input.mousePosition;
+        DeltaY = currentMousePos.y - prevMousePos.y; // ★ここで毎フレーム更新
+
+        if (Mathf.Abs(DeltaY) > 0.5f)
         {
             float currentZRotation = NormalizeAngle(transform.eulerAngles.z);
-            float newZRotation = currentZRotation - deltaY * rotationSpeed;
+            float newZRotation = currentZRotation - DeltaY * rotationSpeed;
 
             //  0°未満に行かないよう制限
             newZRotation = Mathf.Max(newZRotation, 0f);
