@@ -5,13 +5,13 @@ public class Mix : MonoBehaviour
 {
     
     [SerializeField] private Transform _target;
-    //[SerializeField] private Animator _targetAnimator;
+    [SerializeField] private Animator _targetAnimator;
     //速度調整用倍率
-    //[SerializeField] private float _speedMultiplier = 1f;
+    [SerializeField] private float _speedMultiplier = 1f;
     //最大アニメーション速度
-    //[SerializeField] private float _maxAnimationSpeed = 3f;
+    [SerializeField] private float _maxAnimationSpeed = 3f;
     //速度変化の滑らかさ
-    //[SerializeField] private float _speedSmoothTime = 0.1f;
+    [SerializeField] private float _speedSmoothTime = 0.1f;
     public Timer _timer;
     public Score _score;
     private Vector3 _lastMousePos;
@@ -32,16 +32,17 @@ public class Mix : MonoBehaviour
     void Start()
     {
         _lastMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //if (_timer != null)
-        //{
-        //    _timer.TimeUPAction += AnimationStop;
-        //}
+        if (_timer != null)
+        {
+            _timer.TimeUPAction += AnimationStop;
+        }
     }
 
-    //void OnDestroy()
-    //{
-    //    _timer.TimeUPAction -= AnimationStop;
-    //}
+    void OnDestroy()
+    {
+        _timer.TimeUPAction -= AnimationStop;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -49,13 +50,13 @@ public class Mix : MonoBehaviour
         if (!_timer.IsTimeUP)
         {
             TrackMouseRotation();
-            //UpdateAnimationSpeed();
+            UpdateAnimationSpeed();
         }
     }
 
     private void TrackMouseRotation()
     {
-        if (!_timer.CountStart) return;
+        //if (!_timer.CountStart) return;
 
         Vector3 currentMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 center = _target.position;
@@ -79,49 +80,49 @@ public class Mix : MonoBehaviour
         _lastMousePos = currentMousePos;
     }
 
-    //private void UpdateAnimationSpeed()
-    //{
-    //    if (_targetAnimator == null) return;
+    private void UpdateAnimationSpeed()
+    {
+        if (_targetAnimator == null) return;
 
-    //    // 回転速度に基づいてアニメーション速度を計算
-    //    float targetAnimationSpeed = Mathf.Clamp(
-    //        (_currentRotationSpeed / 360f) * _speedMultiplier, 
-    //        0f, 
-    //        _maxAnimationSpeed
-    //    );
+        // 回転速度に基づいてアニメーション速度を計算
+        float targetAnimationSpeed = Mathf.Clamp(
+            (_currentRotationSpeed / 360f) * _speedMultiplier,
+            0f,
+            _maxAnimationSpeed
+        );
 
-    //    // 滑らかに速度を変更
-    //    _currentAnimationSpeed = Mathf.SmoothDamp(
-    //        _currentAnimationSpeed, 
-    //        targetAnimationSpeed, 
-    //        ref _animationSpeedVelocity, 
-    //        _speedSmoothTime
-    //    );
+        // 滑らかに速度を変更
+        _currentAnimationSpeed = Mathf.SmoothDamp(
+            _currentAnimationSpeed,
+            targetAnimationSpeed,
+            ref _animationSpeedVelocity,
+            _speedSmoothTime
+        );
 
-    //    // Animatorの速度を設定
-    //    _targetAnimator.speed = _currentAnimationSpeed;
+        // Animatorの速度を設定
+        _targetAnimator.speed = _currentAnimationSpeed;
 
-    //    // 回転していない場合は速度を徐々に0に
-    //    if (!_timer.CountStart || _currentRotationSpeed < 10f)
-    //    {
-    //        _currentRotationSpeed = Mathf.Lerp(_currentRotationSpeed, 0f, Time.deltaTime * 2f);
-    //    }
-    //}
+        // 回転していない場合は速度を徐々に0に
+        if (!_timer.CountStart || _currentRotationSpeed < 10f)
+        {
+            _currentRotationSpeed = Mathf.Lerp(_currentRotationSpeed, 0f, Time.deltaTime * 2f);
+        }
+    }
 
-    //// デバッグ用：現在の回転速度を取得
-    //public float GetCurrentRotationSpeed()
-    //{
-    //    return _currentRotationSpeed;
-    //}
+    // デバッグ用：現在の回転速度を取得
+    public float GetCurrentRotationSpeed()
+    {
+        return _currentRotationSpeed;
+    }
 
-    //// デバッグ用：現在のアニメーション速度を取得
-    //public float GetCurrentAnimationSpeed()
-    //{
-    //    return _currentAnimationSpeed;
-    //}
+    // デバッグ用：現在のアニメーション速度を取得
+    public float GetCurrentAnimationSpeed()
+    {
+        return _currentAnimationSpeed;
+    }
 
-    //private void AnimationStop()
-    //{
-    //    _targetAnimator.speed = 0;
-    //}
+    private void AnimationStop()
+    {
+        _targetAnimator.speed = 0;
+    }
 }

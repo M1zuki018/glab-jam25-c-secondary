@@ -6,9 +6,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public TMP_Text scoreText;
     private int totalScore = 0;
+    public AudioClip BGM;
+    AudioSource audio;
 
     private void Awake()
     {
+
         if (Instance != null) Destroy(gameObject);
         else
         {

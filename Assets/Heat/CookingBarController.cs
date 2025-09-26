@@ -25,10 +25,10 @@ public class CookingBarController : MonoBehaviour
 
         float totalZonesWidth = greenWidth + 2 * yellowWidth;
 
-        // Décalage depuis le CENTRE
+        // offset from the center
         float startX = -barWidth / 2f + Random.Range(0f, barWidth - totalZonesWidth);
 
-        // Positionner les zones avec ancrage CENTER
+        // wone position with center anchor
         yellowZoneL.anchoredPosition = new Vector2(startX + yellowWidth / 2f, 0);
         yellowZoneL.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, yellowWidth);
 
@@ -43,10 +43,10 @@ public class CookingBarController : MonoBehaviour
     public int GetPoints(float x)
     {
 
-        Debug.Log($"Test de position x={x}");
-        Debug.Log($"Zone verte = {greenZone.anchoredPosition.x - greenZone.rect.width / 2f} à {greenZone.anchoredPosition.x + greenZone.rect.width / 2f}");
-        Debug.Log($"Zone jaune L = {yellowZoneL.anchoredPosition.x - yellowZoneL.rect.width / 2f} à {yellowZoneL.anchoredPosition.x + yellowZoneL.rect.width / 2f}");
-        Debug.Log($"Zone jaune R = {yellowZoneR.anchoredPosition.x - yellowZoneR.rect.width / 2f} à {yellowZoneR.anchoredPosition.x + yellowZoneR.rect.width / 2f}");
+        Debug.Log($"position test x={x}");
+        Debug.Log($"green zone = {greenZone.anchoredPosition.x - greenZone.rect.width / 2f} à {greenZone.anchoredPosition.x + greenZone.rect.width / 2f}");
+        Debug.Log($"yellow zone L = {yellowZoneL.anchoredPosition.x - yellowZoneL.rect.width / 2f} à {yellowZoneL.anchoredPosition.x + yellowZoneL.rect.width / 2f}");
+        Debug.Log($"yellow zone R = {yellowZoneR.anchoredPosition.x - yellowZoneR.rect.width / 2f} à {yellowZoneR.anchoredPosition.x + yellowZoneR.rect.width / 2f}");
 
         if (IsInsideZone(greenZone, x)) return pointsGreen;
         if (IsInsideZone(yellowZoneL, x) || IsInsideZone(yellowZoneR, x)) return pointsYellow;

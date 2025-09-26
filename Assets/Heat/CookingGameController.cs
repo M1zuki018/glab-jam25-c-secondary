@@ -65,9 +65,6 @@ public class CookingGameController : MonoBehaviour
         timerRunning = false;
         gameActive = false;
 
-        finishText.gameObject.SetActive(true);
-        finishText.text = "FINISH!\nAppuyez sur une touche";
-
         cursorController.Stop();
         playerInput.DeactivateInput();
 
@@ -87,12 +84,10 @@ public class CookingGameController : MonoBehaviour
 
 
         int score = barController.GetPoints(cursorController.GetCursorPosition());
-        Debug.Log($"Score gagné : {score}");
+        Debug.Log($"Score  : {score}");
 
-        // TODO : stocker score dans GameManager ici
+        //stock the GameManager score
         GameManager.Instance.AddScore(score);
-        finishText.text = "Loading next screen...";
-        Debug.Log("Passage à l'écran suivant !");
         TransitionManager.Instance.StartTransition("Season_Test");
     }
 

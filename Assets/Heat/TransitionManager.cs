@@ -51,7 +51,7 @@ public class TransitionManager : MonoBehaviour
         // Close
         yield return SlidePanels(leftTargetPos, rightTargetPos);
 
-        // Changement de scène TEST
+        // next scene
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextScene);
         while (!asyncLoad.isDone)
             yield return null;
