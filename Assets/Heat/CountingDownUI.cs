@@ -2,11 +2,26 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 
-public class CookingCountdownUI : MonoBehaviour
+public class CountingDownUI : MonoBehaviour
 {
+    public static CountingDownUI Instance;
+
     public TMP_Text countdownText;
     public float bounceScale = 1.5f;
     public float animDuration = 0.3f;
+
+    private void Awake()
+    {
+        if(Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     public IEnumerator PlayCountdown()
     {

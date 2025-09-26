@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Mix : MonoBehaviour
@@ -19,7 +20,9 @@ public class Mix : MonoBehaviour
     private float _rotationSum; 
     // 回転数（1回転=360度）
     private int _sumMix;
-    
+
+    private bool gameActive = false;
+
     //回転速度計算用
     //現在の回転速度
     private float _currentRotationSpeed;
@@ -33,9 +36,19 @@ public class Mix : MonoBehaviour
     {
         _lastMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (_timer != null)
-        {
             _timer.TimeUPAction += AnimationStop;
-        }
+
+        if (_targetAnimator != null)
+            _targetAnimator.speed = 0; //stop animation at start
+
+        StartCoroutine(StartGameRoutine());
+    }
+
+    private IEnumerator StartGameRoutine()
+    {
+        yield return CountingDownUI.Instance.PlayCountdown();
+        gameActive = true;
+        _timer.CountStart = true;
     }
 
     void OnDestroy()
@@ -43,11 +56,10 @@ public class Mix : MonoBehaviour
         _timer.TimeUPAction -= AnimationStop;
     }
 
-
     // Update is called once per frame
     void Update()
     {
-        if (!_timer.IsTimeUP)
+        if (!_timer.IsTimeUP && gameActive)
         {
             TrackMouseRotation();
             UpdateAnimationSpeed();
@@ -56,29 +68,30 @@ public class Mix : MonoBehaviour
 
     private void TrackMouseRotation()
     {
-        //if (!_timer.CountStart) return;
-
         Vector3 currentMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 center = _target.position;
 
         Vector2 lastDir = (Vector2)_lastMousePos - center;
         Vector2 currentDir = (Vector2)currentMousePos - center;
 
-        float angle = Vector2.SignedAngle(lastDir, currentDir);
+        float angle = -Vector2.SignedAngle(lastDir, currentDir);
 
         _rotationSum += Mathf.Abs(angle); // 累積
+
+        // Update the actual speed
+        _currentRotationSpeed = Mathf.Clamp(Mathf.Abs(angle) / Time.deltaTime * _speedMultiplier, 0f, _maxAnimationSpeed * 360f);
 
         // 360度ごとに1回転とする
         while (_rotationSum >= 360f)
         {
             _rotationSum -= 360f;
-            _sumMix++; // 回転数を加算
-            _score.AddMixScore(1); // Scoreクラスにスコア加算を通知
-
+            _sumMix++;
+            _score.AddMixScore(1);
         }
 
         _lastMousePos = currentMousePos;
     }
+
 
     private void UpdateAnimationSpeed()
     {

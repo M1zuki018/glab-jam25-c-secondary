@@ -1,12 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 //using UnityEngine.InputSystem;
 
 public class Seasoning_C : MonoBehaviour
 {
     private Vector3 prevMousePos;
-
-    [SerializeField]
-    private float rotationSpeed = 0.1f;
+    public bool gameActive = false;
+    [SerializeField] private float rotationSpeed = 0.1f;
 
     public float DeltaY {  get; private set; }
     public bool CanRotate { get; set; } = true;
@@ -14,11 +14,19 @@ public class Seasoning_C : MonoBehaviour
     void Start()
     {
         prevMousePos = Input.mousePosition;
+        StartCoroutine(StartGameRoutine());
+    }
+
+    private IEnumerator StartGameRoutine()
+    {
+        yield return CountingDownUI.Instance.PlayCountdown();
+        gameActive = true;
     }
 
     void Update()
     {
         if (!CanRotate) return;
+        if (!gameActive) return;
 
         Vector3 currentMousePos = Input.mousePosition;
         DeltaY = currentMousePos.y - prevMousePos.y; // ★ここで毎フレーム更新

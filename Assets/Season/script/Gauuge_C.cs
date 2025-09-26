@@ -1,3 +1,4 @@
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,48 +6,74 @@ public class Gauuge_C : MonoBehaviour
 {
     [SerializeField] private Seasoning_C _controller;
     [SerializeField] private Slider _gaugeSlider;
-    [SerializeField] private Transform _rotatingObject; // ‰ñ“]‚·‚éƒIƒuƒWƒFƒNƒg
-    [SerializeField] private float _angleTolerance = 5f; // ‰½“x‚Ü‚Å‹–—e‚·‚é‚©
-    [SerializeField] private float _baseSpeed = 0.1f;
-    [SerializeField] private float _maxBoost = 0.3f;
-    [SerializeField] private float _slowFactor = 0.5f;
-    [SerializeField] private float _deadZone = 0.5f; // ¬‚³‚È—h‚ê‚ğ–³‹
+    [SerializeField] private Transform _rotatingObject; // å›è»¢ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+    [SerializeField] private float rotationThreshold = 60f; // seuil Ã  partir duquel la barre se remplit
+    [SerializeField] private float fillMultiplier = 0.01f; // vitesse de remplissage
+    [SerializeField] private float maxAngle = 180f; // angle max
 
-    private float _currentSpeed = 0f;
+    private bool _hasPassedThreshold = false;
+    private bool _hasLockedRotation = false;
 
     void Update()
     {
-        // Z²‚ÌŠp“xæ“¾i0`180‚Ü‚Å‚ğ-180`180‚É•ÏŠ·j
-        float zAngle = _rotatingObject.eulerAngles.z;
-        if (zAngle > 180f) zAngle -= 360f;
+        if (_hasLockedRotation) return;
 
-        // ‹–—e”ÍˆÍ“à‚È‚çƒQ[ƒWXV‚¹‚¸return
-        if (Mathf.Abs(zAngle) <= _angleTolerance)
+        // Angle actuel du sel
+        float zAngle = _rotatingObject.eulerAngles.z;
+        zAngle = Mathf.Clamp(zAngle, 0f, maxAngle); // ne jamais dÃ©passer 0-180
+
+        // On check si le seuil a Ã©tÃ© dÃ©passÃ©
+        if (!_hasPassedThreshold && zAngle >= rotationThreshold)
         {
-            return;
+            _hasPassedThreshold = true;
         }
 
-        float deltaY = _controller.DeltaY;
-
-        if (Mathf.Abs(deltaY) > _deadZone)
+        // Remplissage proportionnel Ã  lâ€™angle au-delÃ  du seuil
+        if (_hasPassedThreshold && zAngle > rotationThreshold)
         {
-            if (deltaY < 0) // ƒ}ƒEƒX‚ğ‰º‚É“®‚©‚·
-            {
-                float boost = Mathf.Clamp(-deltaY * 0.01f, 0f, _maxBoost);
-                _currentSpeed = _baseSpeed + boost;
-            }
-            else // ƒ}ƒEƒX‚ğã‚É“®‚©‚·
-            {
-                _currentSpeed = _baseSpeed * _slowFactor;
-            }
+            float angleAboveThreshold = zAngle - rotationThreshold; // de 0 Ã  90 max
+            _gaugeSlider.value += angleAboveThreshold * fillMultiplier * Time.deltaTime;
+            _gaugeSlider.value = Mathf.Clamp01(_gaugeSlider.value);
+        }
+
+        // Si on redescend sous le seuil aprÃ¨s lâ€™avoir dÃ©passÃ©
+        if (_hasPassedThreshold && zAngle < rotationThreshold)
+        {
+            _controller.CanRotate = false;
+            _hasLockedRotation = true;
+
+            // Reset rotation
+            _rotatingObject.rotation = Quaternion.Euler(0f, 0f, 0f);
+
+            // VÃ©rifie le score et lance la transition
+            CheckSliderValue(_gaugeSlider.value);
+            GameManager.Instance.AddScore(_gaugeSlider.value >= 0.48f && _gaugeSlider.value <= 0.53f ? 2 : 1);
+
+            StartCoroutine(DelayedTransition());
+        }
+    }
+
+    private void CheckSliderValue(float value)
+    {
+        if (value < 0.4f || value >= 0.61f)
+        {
+            Debug.Log("å¤±æ•—");
+        }
+        else if ((value >= 0.4f && value < 0.48f) || (value >= 0.53f && value <= 0.6f))
+        {
+            Debug.Log("æˆåŠŸ");
         }
         else
         {
-            _currentSpeed = _baseSpeed; // “®‚©‚µ‚Ä‚¢‚È‚¢‚Í’Êí‘¬“x
+            Debug.Log("å®Œç’§");
         }
 
-        _gaugeSlider.value = Mathf.Clamp01(
-            _gaugeSlider.value + _currentSpeed * Time.deltaTime
-        );
+        _controller.gameActive = false;
+    }
+
+    private IEnumerator DelayedTransition()
+    {
+        yield return new WaitForSeconds(2f);
+        TransitionManager.Instance.StartTransition("Mazeru");
     }
 }

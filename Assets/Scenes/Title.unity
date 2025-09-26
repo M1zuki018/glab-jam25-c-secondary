@@ -553,7 +553,7 @@ Transform:
   m_GameObject: {fileID: 370419808}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -939,7 +939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e2b4f32ad023345a90681ed05fe0f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: {fileID: 8300000, guid: 46cde524daf5ba54583cd4079b9079e3, type: 3}
+  BGM: {fileID: 0}
   source: {fileID: 984753876}
 --- !u!82 &984753876
 AudioSource:

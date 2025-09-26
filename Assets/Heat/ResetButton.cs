@@ -1,12 +1,8 @@
 using UnityEngine;
 
-public class SceneLoader : MonoBehaviour
+public class ResetButton : MonoBehaviour
 {
-    public void LoadScene(string sceneName)
-    {
-        TransitionManager.Instance.StartTransition(sceneName);
-    }
-
+    SceneLoader scene;
     public void ReplayButton()
     {
         if (GameManager.Instance != null)
@@ -15,6 +11,6 @@ public class SceneLoader : MonoBehaviour
             GameManager.Instance = null;
         }
 
-        LoadScene("Title");
+        scene.LoadScene("Title");
     }
 }

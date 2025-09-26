@@ -6,8 +6,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public TMP_Text scoreText;
     private int totalScore = 0;
-    public AudioClip BGM;
-    AudioSource audio;
+    //public AudioClip BGM;
+    //private AudioSource source;
 
     private void Awake()
     {

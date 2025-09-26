@@ -205,9 +205,8 @@ GameObject:
   - component: {fileID: 172510015}
   - component: {fileID: 172510014}
   - component: {fileID: 172510013}
-  - component: {fileID: 172510016}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Salt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e1e42bf50df6a449f0db5490a339fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameActive: 0
   rotationSpeed: 0.2
 --- !u!212 &172510014
 SpriteRenderer:
@@ -269,7 +269,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -256844126908629303, guid: afa798d584aed1f49aeaaa28984ef1a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -296,20 +296,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &172510016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172510012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 246a0ac4da693c748ba6232b6b8e05a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 172510013}
-  slider: {fileID: 363579382}
 --- !u!1 &196844972
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,11 +557,9 @@ MonoBehaviour:
   _controller: {fileID: 172510013}
   _gaugeSlider: {fileID: 363579382}
   _rotatingObject: {fileID: 172510015}
-  _angleTolerance: 5
-  _baseSpeed: 0.1
-  _maxBoost: 0.4
-  _slowFactor: 0.7
-  _deadZone: 0.5
+  rotationThreshold: 60
+  fillMultiplier: 0.01
+  maxAngle: 180
 --- !u!1 &379651578
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,7 +678,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 4111338760981436611, guid: 0911b63695e62ba47b13d609713e97b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1106,7 +1090,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1386088310
 RectTransform:

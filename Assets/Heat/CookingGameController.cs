@@ -7,7 +7,6 @@ using System.Collections;
 public class CookingGameController : MonoBehaviour
 {
     [Header("References")]
-    public CookingCountdownUI countdownUI;
     public CookingBarController barController;
     public CursorController cursorController;
     public TMP_Text finishText;
@@ -37,7 +36,7 @@ public class CookingGameController : MonoBehaviour
 
     private IEnumerator StartGameRoutine()
     {
-        yield return countdownUI.PlayCountdown();
+        yield return CountingDownUI.Instance.PlayCountdown();
         gameActive = true;
         timer = cookingTime;
     }
@@ -76,8 +75,7 @@ public class CookingGameController : MonoBehaviour
 
     private IEnumerator WaitForContinue()
     {
-        while (!Keyboard.current.anyKey.wasPressedThisFrame)
-            yield return null;
+        yield return new WaitForSeconds(2f);
 
         float cursorX = cursorController.GetCursorPosition();
         Debug.Log($"Cursor X = {cursorX}");

@@ -32,7 +32,7 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ScoreText.text = $"Score: {MixScore}";
+        ScoreText.text = $"Points: {MixScore}";
         // スコアに基づいて評価を決定
         string evaluation = GetEvaluation(MixScore);
 
