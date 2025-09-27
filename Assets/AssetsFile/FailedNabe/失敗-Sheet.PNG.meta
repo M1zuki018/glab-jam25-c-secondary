@@ -1,16 +1,34 @@
 fileFormatVersion: 2
-guid: ba55fdb5dee5c1d408681fef20a1e5cc
+guid: 76416aa59e1b9f44495d8bb417d74782
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4332876380647378730
-    second: IMG_2501_0
+      213: -2787479357543513644
+    second: "\u5931\u6557-Sheet_0"
   - first:
-      213: -6021567944451319805
-    second: IMG_2501_1
+      213: 7217084496289535623
+    second: "\u5931\u6557-Sheet_1"
   - first:
-      213: 8921185924987235273
-    second: IMG_2501_2
+      213: -1549053562314332487
+    second: "\u5931\u6557-Sheet_2"
+  - first:
+      213: 8782217218029265620
+    second: "\u5931\u6557-Sheet_3"
+  - first:
+      213: -5586084732246933153
+    second: "\u5931\u6557-Sheet_4"
+  - first:
+      213: -195441649206051400
+    second: "\u5931\u6557-Sheet_5"
+  - first:
+      213: -4028157053217401155
+    second: "\u5931\u6557-Sheet_6"
+  - first:
+      213: -6248876538099758757
+    second: "\u5931\u6557-Sheet_7"
+  - first:
+      213: -8899385866545833451
+    second: "\u5931\u6557-Sheet_8"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +61,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -54,7 +72,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -106,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_2501_0
+      name: "\u5931\u6557-Sheet_0"
       rect:
         serializedVersion: 2
-        x: 30
-        y: 40
-        width: 187
-        height: 214
+        x: 0
+        y: 0
+        width: 254
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +139,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6d035db63e78ed3c0800000000000000
-      internalID: -4332876380647378730
+      spriteID: 4d182e20b42e059d0800000000000000
+      internalID: -2787479357543513644
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IMG_2501_1
+      name: "\u5931\u6557-Sheet_1"
       rect:
         serializedVersion: 2
-        x: 171
-        y: 191
-        width: 54
-        height: 52
+        x: 254
+        y: 0
+        width: 254
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3089910bbd71f6ca0800000000000000
-      internalID: -6021567944451319805
+      spriteID: 78611539c1c382460800000000000000
+      internalID: 7217084496289535623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IMG_2501_2
+      name: "\u5931\u6557-Sheet_2"
       rect:
         serializedVersion: 2
-        x: 206
-        y: 228
-        width: 17
-        height: 17
+        x: 508
+        y: 0
+        width: 254
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,8 +183,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9cb2412155b6ecb70800000000000000
-      internalID: 8921185924987235273
+      spriteID: 9b663380ef7a08ae0800000000000000
+      internalID: -1549053562314332487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u5931\u6557-Sheet_3"
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 0
+        width: 254
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d224f49704b0e970800000000000000
+      internalID: 8782217218029265620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u5931\u6557-Sheet_4"
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 0
+        width: 254
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f514039488d3a72b0800000000000000
+      internalID: -5586084732246933153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u5931\u6557-Sheet_5"
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 0
+        width: 254
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bdb1c40bd6a94df0800000000000000
+      internalID: -195441649206051400
       vertices: []
       indices: 
       edges: []
@@ -175,7 +259,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bc64b66e01918f74191d4af25b3074c0
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +269,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IMG_2501_0: -4332876380647378730
-      IMG_2501_1: -6021567944451319805
-      IMG_2501_2: 8921185924987235273
+      "\u5931\u6557-Sheet_0": -2787479357543513644
+      "\u5931\u6557-Sheet_1": 7217084496289535623
+      "\u5931\u6557-Sheet_2": -1549053562314332487
+      "\u5931\u6557-Sheet_3": 8782217218029265620
+      "\u5931\u6557-Sheet_4": -5586084732246933153
+      "\u5931\u6557-Sheet_5": -195441649206051400
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

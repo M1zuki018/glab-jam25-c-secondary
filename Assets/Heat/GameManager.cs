@@ -5,7 +5,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public TMP_Text scoreText;
-    private int totalScore = 0;
+    public int totalScore = 0;
+    public int cookingScore = 0;
+    public int seasoningScore = 0;
+    public int mixingScore = 0;
+
     //public AudioClip BGM;
     //private AudioSource source;
 
@@ -20,9 +24,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddScore(int pts)
+    public void AddCookingScore(int pts)
     {
-        totalScore += pts;
+        cookingScore += pts;
+        FinalScore();
+    }
+
+    public void AddSeasoningScore(int pts)
+    {
+        seasoningScore += pts;
+        FinalScore();
+    }
+
+    public void AddMixingScore(int pts)
+    {
+        mixingScore += pts;
+        FinalScore();
+    }
+
+    public void FinalScore()
+    {
+        totalScore = cookingScore + seasoningScore + mixingScore;
         UpdateScoreUI();
     }
 

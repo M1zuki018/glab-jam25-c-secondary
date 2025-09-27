@@ -85,7 +85,7 @@ public class CookingGameController : MonoBehaviour
         Debug.Log($"Score  : {score}");
 
         //stock the GameManager score
-        GameManager.Instance.AddScore(score);
+        GameManager.Instance.AddCookingScore(score);
         TransitionManager.Instance.StartTransition("Season_Test");
     }
 

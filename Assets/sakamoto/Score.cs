@@ -56,7 +56,7 @@ public class Score : MonoBehaviour
         EvaluationText.gameObject.SetActive(true);
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.AddScore(score);
+            GameManager.Instance.AddMixingScore(score);
         }
     }
 

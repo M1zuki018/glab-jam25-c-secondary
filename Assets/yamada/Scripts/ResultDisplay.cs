@@ -1,39 +1,72 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ResultDisplay : MonoBehaviour
 {
-    [SerializeField] private Text[] _resultText;
-    [SerializeField] private float _fadeDuration = 0f;
-    [SerializeField] private float _fadeInterval = 0.5f;
+    [SerializeField] private TextMeshProUGUI[] _resultText; // 0: ç«åŠ æ¸›, 1: å‘³ä»˜ã‘, 2: ã‹ãæ··ãœ, 3: ç·åˆ
+    [SerializeField] private GameObject[] resultPrefabs;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private TextMeshProUGUI _overallResultText;
+    //[SerializeField] private AudioClip[] _scoreSounds;
+    //[SerializeField] private AudioSource _audioSource;
+    private int total;
 
     private void Start()
     {
-        SetText();
-        TextDisplay();
+        int cooking = GameManager.Instance.cookingScore;
+        int seasoning = GameManager.Instance.seasoningScore;
+        int mixing = GameManager.Instance.mixingScore;
+        total = GameManager.Instance.totalScore;
+
+        _resultText[0].text = $"ç«åŠ æ¸› : {GetScoreText(cooking)}";
+        _resultText[1].text = $"å‘³ä»˜ã‘ : {GetScoreText(seasoning)}";
+        _resultText[2].text = $"ã‹ãæ··ãœ : {GetScoreText(mixing)}";
+        _resultText[3].text = $"ç·åˆ : {total}ç‚¹";
+
+        ShowResult(total);
+        // _audioSource.clip = _scoreSounds[total];
+        //_audioSource.Play();
     }
 
-    private void SetText()
+    void ShowResult(int totalScore)
     {
-        //_resultText[0] = "‰Î‰ÁŒ¸F" +; 
-        //_resultText[1] = "–¡•t‚¯F" +;
-        //_resultText[2] = "‚©‚«‚Ü‚ºG" +;
-        //_resultText[3] = "‘‡“¾“_F" +;
-    }
+        totalScore = total;
+        string result;
 
-    private void TextDisplay()
-    {
-        Sequence sequence = DOTween.Sequence();
-
-        foreach(var resultText in _resultText)
+        int prefabIndex;
+        if (totalScore <= 2)
         {
-            Color color = resultText.color;
-            color.a = 0f;
-            resultText.color = color;
-
-            sequence.Append(resultText.DOFade(1f, _fadeDuration))
-                .AppendInterval(_fadeInterval);
+            prefabIndex = 0;
+            result = "å¤±æ•—";
         }
+        else if (totalScore <= 4)
+        {
+            prefabIndex = 1;
+            result = "æ™®é€š";
+        }
+        else
+        {
+            prefabIndex = 2;
+            result = "å®Œç’§";
+        }
+        // Prefab instancie from index
+        GameObject prefab = Instantiate(resultPrefabs[prefabIndex], spawnPoint.position, Quaternion.identity, spawnPoint);
+
+        if (_overallResultText != null)
+            _overallResultText.text = result;
+    }
+
+    private string GetScoreText(int score)
+    {
+        return score switch
+        {
+            0 => "æ®‹å¿µã€‚ã€‚ã€‚",
+            1 => "è‰¯ã—",
+            2 => "å®Œç’§",
+            _ => "ä¸æ˜"
+        };
     }
 }
