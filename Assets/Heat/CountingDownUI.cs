@@ -25,6 +25,8 @@ public class CountingDownUI : MonoBehaviour
 
     public IEnumerator PlayCountdown()
     {
+        yield return new WaitForSeconds(1f);
+
         countdownText.gameObject.SetActive(true);
 
         yield return AnimateNumber("3");

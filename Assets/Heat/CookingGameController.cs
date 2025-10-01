@@ -11,6 +11,8 @@ public class CookingGameController : MonoBehaviour
     public CursorController cursorController;
     public TMP_Text finishText;
 
+    [SerializeField] private AudioClip cookingClip;
+
     public GameObject animationBase;
     public GameObject animationEnd;
 
@@ -21,6 +23,7 @@ public class CookingGameController : MonoBehaviour
     private bool timerRunning = false;
     private bool gameActive = false;
     private PlayerInput playerInput;
+
 
     private void Start()
     {
@@ -37,6 +40,7 @@ public class CookingGameController : MonoBehaviour
     private IEnumerator StartGameRoutine()
     {
         yield return CountingDownUI.Instance.PlayCountdown();
+        AudioManager.Instance.PlayLoopSFX(cookingClip);
         gameActive = true;
         timer = cookingTime;
     }
@@ -70,12 +74,11 @@ public class CookingGameController : MonoBehaviour
         animationBase.SetActive(false);
         animationEnd.SetActive(true);
 
-        StartCoroutine(WaitForContinue());
+        WaitForContinue();
     }
 
-    private IEnumerator WaitForContinue()
+    private void WaitForContinue()
     {
-        yield return new WaitForSeconds(2f);
 
         float cursorX = cursorController.GetCursorPosition();
         Debug.Log($"Cursor X = {cursorX}");
@@ -86,7 +89,8 @@ public class CookingGameController : MonoBehaviour
 
         //stock the GameManager score
         GameManager.Instance.AddCookingScore(score);
-        TransitionManager.Instance.StartTransition("Season_Test");
+        //Stop the SFX
+        AudioManager.Instance.StopLoopSFX();
     }
 
     public void OnMoveLeft(InputAction.CallbackContext context)

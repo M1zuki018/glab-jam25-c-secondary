@@ -7,6 +7,6 @@ public class ScoreUIManager : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.RegisterScoreText(scoreText);
+       // GameManager.Instance.RegisterScoreText(scoreText);
     }
 }

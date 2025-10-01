@@ -6,6 +6,8 @@ public class TransitionManager : MonoBehaviour
 {
     public static TransitionManager Instance;
 
+    [SerializeField] private AudioClip transitionClip;
+
     public Transform leftPanel;
     public Transform rightPanel;
     public float transitionDuration = 2f;
@@ -15,7 +17,7 @@ public class TransitionManager : MonoBehaviour
     private Vector2 leftTargetPos;
     private Vector2 rightTargetPos;
 
-    private bool isTransitioning = false;
+    public bool isTransitioning = false;
 
     void Awake()
     {
@@ -47,6 +49,7 @@ public class TransitionManager : MonoBehaviour
     IEnumerator TransitionCoroutine(string nextScene)
     {
         isTransitioning = true;
+        AudioManager.Instance.PlaySFX(transitionClip, 0.2f);
 
         // Close
         yield return SlidePanels(leftTargetPos, rightTargetPos);

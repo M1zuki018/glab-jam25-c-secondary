@@ -11,7 +11,6 @@ public class Score : MonoBehaviour
     [SerializeField] private Timer _timer;
     public int MixScore;
     public Text ScoreText;
-    public Text EvaluationText;
     public int score;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,7 +20,6 @@ public class Score : MonoBehaviour
         {
             _timer.TimeUPAction += SumScore;
         }
-        EvaluationText.gameObject.SetActive(false);
     }
 
     private void OnDestroy()
@@ -34,13 +32,6 @@ public class Score : MonoBehaviour
     {
         ScoreText.text = $"Points: {MixScore}";
         // スコアに基づいて評価を決定
-        string evaluation = GetEvaluation(MixScore);
-
-        // 評価テキストを設定
-        if (EvaluationText != null)
-        {
-            EvaluationText.text = evaluation;
-        }
     }
 
     public void AddMixScore(int score)
@@ -53,31 +44,9 @@ public class Score : MonoBehaviour
         //setactive(true)にする
         //Debug.Log("TimeUp");
         score = GetScore(MixScore);
-        EvaluationText.gameObject.SetActive(true);
         if (GameManager.Instance != null)
         {
             GameManager.Instance.AddMixingScore(score);
-        }
-    }
-
-    /// <summary>
-    /// スコアに基づいて評価を返す
-    /// </summary>
-    /// <param name="score">現在のスコア</param>
-    /// <returns>評価文字列</returns>
-    private string GetEvaluation(int score)
-    {
-        if (score >= _perfect)
-        {
-            return "Perfect!";
-        }
-        else if (score >= _file)
-        {
-            return "Good!";
-        }
-        else
-        {
-            return "Fair";
         }
     }
 
@@ -96,6 +65,4 @@ public class Score : MonoBehaviour
             return 0;
         }
     }
-
-
 }

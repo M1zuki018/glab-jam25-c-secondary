@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7338519972797157715}
   - component: {fileID: 5643065257027501067}
   m_Layer: 0
-  m_Name: FuutsuNabe
+  m_Name: FutsuuNabe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 5370066790083272335, guid: 1ce846a77f6278d4091707e35f039ca8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

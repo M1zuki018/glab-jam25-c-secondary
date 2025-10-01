@@ -50,8 +50,6 @@ public class Gauuge_C : MonoBehaviour
             // Check score and go for next scene
             CheckSliderValue(_gaugeSlider.value);
             GameManager.Instance.AddSeasoningScore(score);
-
-            StartCoroutine(DelayedTransition());
         }
     }
 
@@ -74,11 +72,5 @@ public class Gauuge_C : MonoBehaviour
         }
 
         _controller.gameActive = false;
-    }
-
-    private IEnumerator DelayedTransition()
-    {
-        yield return new WaitForSeconds(2f);
-        TransitionManager.Instance.StartTransition("Mazeru");
     }
 }

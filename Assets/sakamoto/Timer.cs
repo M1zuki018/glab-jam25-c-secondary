@@ -50,7 +50,6 @@ public class Timer : MonoBehaviour
             TimeUPAction?.Invoke();
             IsTimeUP = true;
             CountStart = false;
-            StartCoroutine(DelayedTransition());
         }
     }
 
@@ -61,11 +60,5 @@ public class Timer : MonoBehaviour
         CountStart = true;
         else
         CountStart = false;
-    }
-
-    private IEnumerator DelayedTransition()
-    {
-        yield return new WaitForSeconds(2f);
-        TransitionManager.Instance.StartTransition("Result");
     }
 }
