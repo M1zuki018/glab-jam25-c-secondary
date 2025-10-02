@@ -502,7 +502,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0000009536743}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0.0000019073486}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &596583389
@@ -598,13 +598,18 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u963F\u4E45\u6D25 \u5320\u8F1D\t\t\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\r\n\u963F\u90E8
-    \u7ADC\u5E0C\t\t\t\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\r\n\u4F0A\u85E4 \u7FD4\u68A7\t\t\t\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\r\n\u795E\u7530
-    \u8389\u7A42\t\t\t\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\r\n\u5742\u672C \u967D\t\t\t\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\r\r\n\u30C7\u30A3\u30E9\u30F3\t\t\t\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\r\n\u5C71\u7530
-    \u7D62\u6597\t\t\t\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\r\n\u5927\u4E95 \u4FCA\u660E\t\t\t\u30D7\u30E9\u30F3\u30CA\u30FC\r\n\u7B20\u539F
-    \u7FD4\t\t\t\u30D7\u30E9\u30F3\u30CA\u30FC\r\n\u52A0\u85E4 \u745E\u6A39\t\t\t\u30D7\u30E9\u30F3\u30CA\u30FC\r\n\u5927\u576A
-    \u672A\u6A39\t\t\t3D\u30C7\u30B6\u30A4\u30CA\u30FC\r\n\u5C71\u53E3 \u76F4\u4EBA\t\t\t3D\u30C7\u30B6\u30A4\u30CA\u30FC\r\n\u5177\u5FD7\u5805
-    \u65E5\u6A59\t\t\u30B5\u30A6\u30F3\u30C9"
+  m_Text: "\r\r\r\u30D9\u30EB\u30CA\u30FC\u30C9\u30FB\u30C7\u30A3\u30E9\u30F3\t\t\t\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\n\u963F\u4E45\u6D25
+    \u5320\u8F1D\t\t\t\t\t\t\t\t\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\r\n\u963F\u90E8
+    \u7ADC\u5E0C\t\t\t\t\t\t\t\t\t\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\r\n\u4F0A\u85E4
+    \u7FD4\u68A7\t\t\t\t\t\t\t\t\t\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\r\n\u795E\u7530
+    \u8389\u7A42\t\t\t\t\t\t\t\t\t\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\r\n\u5742\u672C
+    \u967D\t\t\t\t\t\t\t\t\t\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\r\r\n\u5C71\u7530
+    \u7D62\u6597\t\t\t\t\t\t\t\t\t\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\r\n\u5927\u4E95
+    \u4FCA\u660E\t\t\t\t\t\t\t\t\t\u30D7\u30E9\u30F3\u30CA\u30FC\r\n\u7B20\u539F
+    \u7FD4\t\t\t\t\t\t\t\t\t\u30D7\u30E9\u30F3\u30CA\u30FC\r\n\u52A0\u85E4 \u745E\u6A39\t\t\t\t\t\t\t\t\t\u30D7\u30E9\u30F3\u30CA\u30FC\r\n\u5927\u576A
+    \u672A\u6A39\t\t\t\t\t\t\t\t\t3D\u30C7\u30B6\u30A4\u30CA\u30FC\r\n\u5C71\u53E3
+    \u76F4\u4EBA\t\t\t\t\t\t\t\t\t3D\u30C7\u30B6\u30A4\u30CA\u30FC\r\n\u5177\u5FD7\u5805
+    \u65E5\u6A59\t\t\t\t\t\t\t\t\u30B5\u30A6\u30F3\u30C9"
 --- !u!222 &1349393772
 CanvasRenderer:
   m_ObjectHideFlags: 0
