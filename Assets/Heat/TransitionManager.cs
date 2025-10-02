@@ -49,7 +49,8 @@ public class TransitionManager : MonoBehaviour
     IEnumerator TransitionCoroutine(string nextScene)
     {
         isTransitioning = true;
-        AudioManager.Instance.PlaySFX(transitionClip, 0.2f);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.Instance.PlaySFX(transitionClip, 0.15f);
 
         // Close
         yield return SlidePanels(leftTargetPos, rightTargetPos);

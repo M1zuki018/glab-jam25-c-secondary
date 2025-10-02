@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 1816532279}
   _targetAnimator: {fileID: 1816532277}
+  mixClip: {fileID: 8300000, guid: 8a223f0d9435a6e439d86c6dec76791e, type: 3}
   _speedMultiplier: 1
   _maxAnimationSpeed: 3
   _speedSmoothTime: 0.1
@@ -543,7 +544,6 @@ MonoBehaviour:
   _timer: {fileID: 273996279}
   MixScore: 0
   ScoreText: {fileID: 1680198013}
-  EvaluationText: {fileID: 0}
   score: 0
 --- !u!4 &1581518777
 Transform:

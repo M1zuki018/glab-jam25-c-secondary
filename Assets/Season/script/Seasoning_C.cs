@@ -35,7 +35,7 @@ public class Seasoning_C : MonoBehaviour
         {
             float currentZRotation = NormalizeAngle(transform.eulerAngles.z);
             float newZRotation = currentZRotation - DeltaY * rotationSpeed;
-
+            
             //  0°未満に行かないよう制限
             newZRotation = Mathf.Max(newZRotation, 0f);
 

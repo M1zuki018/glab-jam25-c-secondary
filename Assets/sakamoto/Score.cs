@@ -47,6 +47,7 @@ public class Score : MonoBehaviour
         if (GameManager.Instance != null)
         {
             GameManager.Instance.AddMixingScore(score);
+            AudioManager.Instance.StopLoopSFX();
         }
     }
 

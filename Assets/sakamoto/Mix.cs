@@ -7,6 +7,7 @@ public class Mix : MonoBehaviour
     
     [SerializeField] private Transform _target;
     [SerializeField] private Animator _targetAnimator;
+    [SerializeField] private AudioClip mixClip;
     //速度調整用倍率
     [SerializeField] private float _speedMultiplier = 1f;
     //最大アニメーション速度
@@ -47,6 +48,7 @@ public class Mix : MonoBehaviour
     private IEnumerator StartGameRoutine()
     {
         yield return CountingDownUI.Instance.PlayCountdown();
+        AudioManager.Instance.PlayLoopSFX(mixClip, 0f);
         gameActive = true;
         _timer.CountStart = true;
     }
@@ -120,6 +122,17 @@ public class Mix : MonoBehaviour
         {
             _currentRotationSpeed = Mathf.Lerp(_currentRotationSpeed, 0f, Time.deltaTime * 2f);
         }
+
+        if (AudioManager.Instance.sfxLoopSource != null)
+        {
+            // volume change depend of currentRotationSpeed
+            AudioManager.Instance.sfxLoopSource.volume = Mathf.Clamp01(_currentRotationSpeed / 360f);
+
+            float minPitch = 1f;
+            float maxPitch = 3f;
+            AudioManager.Instance.sfxLoopSource.pitch = Mathf.Lerp(minPitch, maxPitch, Mathf.Clamp01(_currentRotationSpeed / 360f));
+        }
+
     }
 
     // デバッグ用：現在の回転速度を取得

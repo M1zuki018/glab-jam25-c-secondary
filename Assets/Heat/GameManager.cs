@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public int mixingScore = 0;
     public float bounceScale = 1.5f;
     public float animDuration = 0.3f;
+    [SerializeField] AudioClip goodClip;
+    [SerializeField] AudioClip badClip;
 
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator AnimateScoreAndTransition(int score, string nextScene)
     {
+        yield return new WaitForSeconds(1f);
         StartCoroutine(AnimateScore(score));  // Wait for text animation
         TransitionManager.Instance.StartTransition(nextScene);
         yield return null;
@@ -79,7 +82,7 @@ public class GameManager : MonoBehaviour
     {
         return score switch
         {
-            0 => "Ž¸”s",
+            0 => "Ž¸”s" ,
             1 => "—Ç‚µ",
             2 => "Š®àø",
             _ => ""
@@ -89,11 +92,23 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator AnimateScore(int score)
     {
+        yield return new WaitForSeconds(0.5f);
+
         if (scoreText != null)
         {
             scoreText.text = GetResultScore(score);
             scoreText.transform.localScale = Vector3.zero;
             scoreText.gameObject.SetActive(true);
+        }
+
+        if (score == 0)
+        {
+            AudioManager.Instance.PlaySFX(badClip, 0.4f);
+        }
+        else
+        {
+            AudioManager.Instance.PlaySFX(goodClip, 0.4f);
+
         }
 
         float t = 0f;

@@ -11,12 +11,20 @@ public class Gauuge_C : MonoBehaviour
     [SerializeField] private float rotationThreshold = 60f; // Fill start
     [SerializeField] private float fillMultiplier = 0.01f; // Fill speed
     [SerializeField] private float maxAngle = 180f; // angle max
+    [SerializeField] AudioClip SeasoningClip;
+
     private int score = 0;
 
     private bool _hasPassedThreshold = false;
     private bool _hasLockedRotation = false;
+    private bool _isPlayingSeasoning = false;
 
     void Update()
+    {
+        SaltRotation();
+    }
+
+    private void SaltRotation()
     {
         if (_hasLockedRotation) return;
 
@@ -33,7 +41,14 @@ public class Gauuge_C : MonoBehaviour
         // More big is the angle more speed it goes
         if (_hasPassedThreshold && zAngle > rotationThreshold)
         {
-            float angleAboveThreshold = zAngle - rotationThreshold; // 0 à 90 max
+            if (!_isPlayingSeasoning)
+            {
+                AudioManager.Instance.PlayLoopSFX(SeasoningClip);
+                AudioManager.Instance.sfxLoopSource.pitch = 0.15f;
+                _isPlayingSeasoning = true;
+            }
+
+            float angleAboveThreshold = zAngle - rotationThreshold; // 0 to 90 max
             _gaugeSlider.value += angleAboveThreshold * fillMultiplier * Time.deltaTime;
             _gaugeSlider.value = Mathf.Clamp01(_gaugeSlider.value);
         }
@@ -50,6 +65,11 @@ public class Gauuge_C : MonoBehaviour
             // Check score and go for next scene
             CheckSliderValue(_gaugeSlider.value);
             GameManager.Instance.AddSeasoningScore(score);
+            if (_isPlayingSeasoning)
+            {
+                AudioManager.Instance.StopLoopSFX();
+                _isPlayingSeasoning = false;
+            }
         }
     }
 

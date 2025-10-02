@@ -58,8 +58,9 @@ public class AudioManager : MonoBehaviour
         if (sfxLoopSource != null)
         {
             sfxLoopSource.Stop();
-            Destroy(sfxLoopSource);
-            sfxLoopSource = null;
+            sfxLoopSource.clip = null;
+            sfxLoopSource.volume = 1f;
+            sfxLoopSource.pitch = 1f;
         }
     }
 }

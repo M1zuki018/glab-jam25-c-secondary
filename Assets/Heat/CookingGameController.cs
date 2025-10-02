@@ -12,6 +12,8 @@ public class CookingGameController : MonoBehaviour
     public TMP_Text finishText;
 
     [SerializeField] private AudioClip cookingClip;
+    [SerializeField] private AudioClip fireClip;
+    [SerializeField] private AudioSource audioSource;
 
     public GameObject animationBase;
     public GameObject animationEnd;
@@ -40,7 +42,13 @@ public class CookingGameController : MonoBehaviour
     private IEnumerator StartGameRoutine()
     {
         yield return CountingDownUI.Instance.PlayCountdown();
-        AudioManager.Instance.PlayLoopSFX(cookingClip);
+        AudioManager.Instance.PlayLoopSFX(cookingClip, 0.55f);
+        if (audioSource != null)
+        {
+            audioSource.clip = fireClip;
+            audioSource.volume = 0.3f;
+            audioSource.Play();
+        }
         gameActive = true;
         timer = cookingTime;
     }
@@ -74,7 +82,7 @@ public class CookingGameController : MonoBehaviour
         animationBase.SetActive(false);
         animationEnd.SetActive(true);
 
-        WaitForContinue();
+        Invoke("WaitForContinue", 0.5f);
     }
 
     private void WaitForContinue()

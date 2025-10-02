@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using DG.Tweening;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ResultDisplay : MonoBehaviour
@@ -10,8 +7,9 @@ public class ResultDisplay : MonoBehaviour
     [SerializeField] private GameObject[] resultPrefabs;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private TextMeshProUGUI _overallResultText;
-    //[SerializeField] private AudioClip[] _scoreSounds;
-    //[SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip goodResultClip;
+    [SerializeField] private AudioClip badResultClip;
+
     private int total;
 
     private void Start()
@@ -41,16 +39,20 @@ public class ResultDisplay : MonoBehaviour
         {
             prefabIndex = 0;
             result = "失敗";
+            AudioManager.Instance.PlaySFX(badResultClip);
         }
         else if (totalScore <= 4)
         {
             prefabIndex = 1;
             result = "普通";
+            AudioManager.Instance.PlaySFX(goodResultClip);
+
         }
         else
         {
             prefabIndex = 2;
             result = "完璧";
+            AudioManager.Instance.PlaySFX(goodResultClip);
         }
         // Prefab instancie from index
         GameObject prefab = Instantiate(resultPrefabs[prefabIndex], spawnPoint.position, Quaternion.identity, spawnPoint);
@@ -63,7 +65,7 @@ public class ResultDisplay : MonoBehaviour
     {
         return score switch
         {
-            0 => "残念。。。",
+            0 => "残念",
             1 => "良し",
             2 => "完璧",
             _ => "不明"
